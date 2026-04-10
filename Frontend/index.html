@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Kho Hàng - Cửa Hàng Công Nghệ</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📦 Quản Lý Kho Hàng Cửa Hàng Công Nghệ</h1>
+        </header>
+
+        <!-- Tổng giá trị kho -->
+        <section class="inventory-value-section">
+            <div class="inventory-card">
+                <h3>💰 Tổng Giá Trị Kho</h3>
+                <p id="totalValue" class="total-value">$0.00</p>
+            </div>
+        </section>
+
+        <!-- Tìm kiếm -->
+        <section class="search-section">
+            <input 
+                type="text" 
+                id="searchInput" 
+                placeholder="🔍 Tìm kiếm sản phẩm theo tên..."
+                class="search-input"
+            >
+        </section>
+
+        <!-- Form thêm sản phẩm -->
+        <section class="form-section">
+            <h2>➕ Thêm Sản Phẩm Mới</h2>
+            <form id="productForm" class="product-form">
+                <div class="form-group">
+                    <label for="productName">Tên Sản Phẩm:</label>
+                    <input type="text" id="productName" required>
+                </div>
+                <div class="form-group">
+                    <label for="productPrice">Giá ($):</label>
+                    <input type="number" id="productPrice" step="0.01" min="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="productQuantity">Số Lượng:</label>
+                    <input type="number" id="productQuantity" min="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="productCategory">Danh Mục:</label>
+                    <select id="productCategory" required></select>
+                </div>
+                <button type="submit" class="btn btn-primary">Thêm Sản Phẩm</button>
+                <button type="reset" class="btn btn-secondary">Xóa</button>
+            </form>
+        </section>
+
+        <!-- Bảng danh sách sản phẩm -->
+        <section class="table-section">
+            <h2>📋 Danh Sách Sản Phẩm</h2>
+            <table id="productsTable" class="products-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tên Sản Phẩm</th>
+                        <th>Giá ($)</th>
+                        <th>Số Lượng</th>
+                        <th>Danh Mục</th>
+                        <th>Tổng Giá Trị</th>
+                        <th>Hành Động</th>
+                    </tr>
+                </thead>
+                <tbody id="productsBody">
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+    <!-- Modal sửa sản phẩm -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>✏️ Sửa Sản Phẩm</h2>
+            <form id="editForm" class="product-form">
+                <input type="hidden" id="editProductId">
+                <div class="form-group">
+                    <label for="editProductName">Tên Sản Phẩm:</label>
+                    <input type="text" id="editProductName" required>
+                </div>
+                <div class="form-group">
+                    <label for="editProductPrice">Giá ($):</label>
+                    <input type="number" id="editProductPrice" step="0.01" min="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="editProductQuantity">Số Lượng:</label>
+                    <input type="number" id="editProductQuantity" min="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="editProductCategory">Danh Mục:</label>
+                    <select id="editProductCategory" required></select>
+                </div>
+                <button type="submit" class="btn btn-primary">Lưu Thay Đổi</button>
+                <button type="button" class="btn btn-secondary" id="cancelEdit">Hủy</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
